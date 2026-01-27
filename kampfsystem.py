@@ -144,6 +144,15 @@ def kampf(spieler, gegner_liste):
                 return
             continue
 
+                aktuelle_gegner = [g for g in aktuelle_gegner if g.current_HP > 0]
+        if not aktuelle_gegner:
+            print("Alle Gegner wurden besiegt!")
+            gold_gewinn = random.randint(10, 30)
+            spieler.gold += gold_gewinn
+            print(f"Du hast {gold_gewinn} Gold gefunden! (Gesamt: {spieler.gold})")
+            return
+        gegner_phase(aktuelle_gegner, spieler)
+
         gegner_liste = [g for g in gegner_liste if g.current_HP > 0]
 
         if not gegner_liste:
