@@ -14,6 +14,8 @@ class Character:
         self.charisma = charisma
         self.luck = luck
         self.faehigkeiten = []
+        self.gold = 100
+        self.inventar = []
 
 Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 20, 20, 20)
 Zauberer = Character("Zauberer", 1, 0, 400, 40, 90, 150, 30, 250, 40, 30)
@@ -21,9 +23,14 @@ Paladin = Character("Paladin", 1, 0, 800, 90, 50, 50, 70, 50, 50, 40)
 Schurke = Character("Schurke", 1, 0, 600, 70, 120, 30, 50, 50, 20, 100)
 
 
-from faehigkeitenbaum import Feuerball, Meteor, Blitzschwung
+from faehigkeitenbaum import (
+    Feuerball, Meteor, Frostnova,
+    Blitzschwung, Wütender_Schlag, Erdbeben,
+    Heiliges_Licht, Gerechter_Zorn, Schildstoss,
+    Meuchelmord, Giftpfeil, Klingensturm
+)
 
-Zauberer.faehigkeiten = [Feuerball, Meteor]
-Barbar.faehigkeiten = [Blitzschwung]
-Paladin.faehigkeiten = []
-Schurke.faehigkeiten = []
+Zauberer.faehigkeiten = [Feuerball, Meteor, Frostnova]
+Barbar.faehigkeiten = [Blitzschwung, Wütender_Schlag, Erdbeben]
+Paladin.faehigkeiten = [Heiliges_Licht, Gerechter_Zorn, Schildstoss]
+Schurke.faehigkeiten = [Meuchelmord, Giftpfeil, Klingensturm]
