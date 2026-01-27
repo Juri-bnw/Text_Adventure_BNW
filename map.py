@@ -5,7 +5,8 @@ MAP_OPTIONEN = [
     "wiese",
     "dunkler_wald",
     "verlassene_huette",
-    "rasten"
+    "rasten",
+    "marktplatz"
 ]
 
 GEGNER_PRO_ORT = {
@@ -14,7 +15,11 @@ GEGNER_PRO_ORT = {
     "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier]
 }
 
+
 def erkunden(ort):
+    if ort == "marktplatz":
+        return "marktplatz", None
+
     moegliche_gegner = GEGNER_PRO_ORT[ort]
 
     anzahl_gegner = random.randint(1, 3)  # 1 bis 3 Gegner
@@ -27,10 +32,11 @@ def erkunden(ort):
     return "kampf", gegner_liste
 
 
-
 def fuehre_aktion_aus(aktion, spieler):
     if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette":
         return erkunden(aktion)
+    elif aktion == "marktplatz":
+        return erkunden("marktplatz")
     elif aktion == "rasten":
         rasten(spieler)
         return None
@@ -47,7 +53,9 @@ def rasten(spieler):
         spieler.current_HP = spieler.max_HP
         hp_heilung = 0
         print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
-    else: print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
+    else:
+        print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
+
 
 aktionen_zaehler = 0
 tag = 1
@@ -68,7 +76,7 @@ def map_loop(spieler):
         print("Ungültige Eingabe.")
         return map_loop(spieler)
 
-    aktion = optionen[int(wahl)-1]
+    aktion = optionen[int(wahl) - 1]
     aktionen_zaehler += 1
 
     if aktionen_zaehler >= 5:
