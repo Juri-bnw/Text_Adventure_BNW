@@ -3,6 +3,8 @@ import kampfsystem
 import map
 import gegner
 import character
+import marktplatz
+
 
 def charakter_auswahl():
     print("Wähle deinen Charakter:")
@@ -25,6 +27,7 @@ def charakter_auswahl():
         print("Ungültige Auswahl.")
         return charakter_auswahl()
 
+
 def spiel_start():
     print("Willkommen zum Text Adventure\n")
 
@@ -33,16 +36,26 @@ def spiel_start():
 
     spiel_loop(spieler)
 
+
 def spiel_loop(spieler):
     while True:
         aktion = map.map_loop(spieler)
+
+        # Wenn aktion None ist (Tag vergeht), überspringen wir die Ausführung
+        if aktion is None:
+            continue
+
         ergebnis = map.fuehre_aktion_aus(aktion, spieler)
 
         if ergebnis is None:
-            continue  # keine Aktion nötig
+            continue
 
-        if isinstance(ergebnis, tuple) and ergebnis[0] == "kampf":
-            gegner_liste = ergebnis[1]
-            kampfsystem.kampf(spieler, gegner_liste)
+        if isinstance(ergebnis, tuple):
+            if ergebnis[0] == "kampf":
+                gegner_liste = ergebnis[1]
+                kampfsystem.kampf(spieler, gegner_liste)
+            elif ergebnis[0] == "marktplatz":
+                marktplatz.zeige_marktplatz(spieler)
+
 
 spiel_start()
