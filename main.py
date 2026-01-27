@@ -1,57 +1,48 @@
 import random
 import kampfsystem
+import map
+import gegner
+import character
 
-class Character:
-    def __init__(self, name, level, exp, hp, strenght, dex, energy, defense, mana, charisma, luck):
-        self.name = name
-        self.level = level
-        self.exp = exp
-        self.hp = hp
-        self.strenght = strenght
-        self.dex = dex
-        self.energy = energy
-        self.defense = defense
-        self.mana = mana
-        self.charisma = charisma
-        self.luck = luck
+def charakter_auswahl():
+    print("Wähle deinen Charakter:")
+    print("1) Barbar")
+    print("2) Zauberer")
+    print("3) Paladin")
+    print("4) Schurke")
 
-class Gegner:
-    def __init__(self, name, level, hp, strenght, dex, energy, defense, exp_give):
-        self.name = name
-        self.level = level
-        self.hp = hp
-        self.strenght = strenght
-        self.dex = dex
-        self.energy = energy
-        self.defense = defense
-        self.exp_give = exp_give
+    wahl = input("> ")
 
-class Faehigkeiten:
-    def __init__(self, name, level, strenght, dex, energy, mana, charisma, luck):
-        self.name = name
-        self.level = level
-        self.strenght = strenght
-        self.dex = dex
-        self.energy = energy
-        self.mana = mana
-        self.charisma = charisma
-        self.luck = luck
+    if wahl == "1":
+        return character.Barbar
+    elif wahl == "2":
+        return character.Zauberer
+    elif wahl == "3":
+        return character.Paladin
+    elif wahl == "4":
+        return character.Schurke
+    else:
+        print("Ungültige Auswahl.")
+        return charakter_auswahl()
 
-class Gegenstaende:
-    def __init__(self, name, bonuses):
-        self.name = name
-        self.bonuses = bonuses
+def spiel_start():
+    print("Willkommen zum Text Adventure\n")
 
+    spieler = charakter_auswahl()
+    print(f"\nDu hast {spieler.name} gewählt.\n")
 
-Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 20, 20, 20 )
-Zauberer = Character("Zauberer", 1, 0, 400, 40, 90, 150, 30, 250, 40, 30)
-Paladin = Character("Paladin", 1, 0, 800, 90, 50, 50, 70, 50, 50, 40)
-Schurke = Character("Schurke", 1, 0, 600, 70, 120, 30, 50, 50, 20, 100)
+    spiel_loop(spieler)
 
-Skelett = Gegner("Skelett", 1, 50, 10, 15, 0, 0, 10)
-Fledermaus = Gegner("Fledermaus", 1, 20, 10, 40, 0, 5, 10)
-Ratte = Gegner("Ratte", 1, 20, 20, 20, 0, 10, 10)
+def spiel_loop(spieler):
+    while True:
+        aktion = map.map_loop(spieler)
+        ergebnis = map.fuehre_aktion_aus(aktion, spieler)
 
+        if ergebnis is None:
+            continue  # keine Aktion nötig
 
+        if isinstance(ergebnis, tuple) and ergebnis[0] == "kampf":
+            gegner = ergebnis[1]
+            kampfsystem.kampf(spieler, gegner)
 
-kampfsystem.kampf(Schurke, Ratte)
+spiel_start()

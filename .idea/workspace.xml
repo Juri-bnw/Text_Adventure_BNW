@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Text_Adventure.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/faehigkeitenbaum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kampfsystem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 0.0">
+      <change afterPath="$PROJECT_DIR$/Testy McTestface.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gegner.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory_and_items.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/marktplatz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faehigkeitenbaum.py" beforeDir="false" afterPath="$PROJECT_DIR$/faehigkeitenbaum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kampfsystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/kampfsystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Juri-bnw"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Juri-bnw/Text_Adventure_BNW.git",
+    "accountId": "c659e5ce-d258-46cf-a353-f731504846a3"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -40,10 +54,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.kampfsystem.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.map.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
+    ]
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -61,6 +82,30 @@
       <option name="presentableId" value="Default" />
       <updated>1769188271187</updated>
     </task>
+    <task id="LOCAL-00001" summary="Version 0.0">
+      <option name="closed" value="true" />
+      <created>1769434042067</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1769434042067</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Version 0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.0" />
   </component>
 </project>
