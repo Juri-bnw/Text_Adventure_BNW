@@ -2,7 +2,6 @@ import random
 import gegner
 
 MAP_OPTIONEN = [
-    "erkunden",
     "wiese",
     "dunkler_wald",
     "verlassene_huette",
@@ -16,10 +15,17 @@ GEGNER_PRO_ORT = {
 }
 
 def erkunden(ort):
-    gegner_liste = GEGNER_PRO_ORT[ort]
-    gegner_auswahl = random.choice(gegner_liste)  # jetzt Objekt, kein String
-    print(f"Ein Gegner taucht auf: {gegner_auswahl.name}!")
-    return "kampf", gegner_auswahl
+    moegliche_gegner = GEGNER_PRO_ORT[ort]
+
+    anzahl_gegner = random.randint(1, 3)  # 1 bis 3 Gegner
+    gegner_liste = random.choices(moegliche_gegner, k=anzahl_gegner)
+
+    print("Gegner tauchen auf:")
+    for g in gegner_liste:
+        print(f" - {g.name}")
+
+    return "kampf", gegner_liste
+
 
 
 def fuehre_aktion_aus(aktion, spieler):
@@ -42,13 +48,6 @@ def rasten(spieler):
         hp_heilung = 0
         print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
     else: print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
-
-def Erkunde_Wiese(gegner_liste):
-    gegner_im_ort_liste = [gegner.Fledermaus]
-    gegner = random.choice(gegner_liste)
-    print("Ein Gegner taucht auf!")
-    return "kampf", gegner
-
 
 aktionen_zaehler = 0
 tag = 1
@@ -76,5 +75,6 @@ def map_loop(spieler):
         tag += 1
         aktionen_zaehler = 0
         print("\nEin Tag vergeht...\n")
+        return None
 
     return aktion

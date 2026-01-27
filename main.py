@@ -42,7 +42,7 @@ def spiel_loop(spieler):
             continue  # keine Aktion nötig
 
         if isinstance(ergebnis, tuple) and ergebnis[0] == "kampf":
-            gegner = ergebnis[1]
-            kampfsystem.kampf(spieler, gegner)
+            gegner_liste = ergebnis[1]
+            kampfsystem.kampf(spieler, gegner_liste)
 
 spiel_start()

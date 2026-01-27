@@ -13,8 +13,17 @@ class Character:
         self.current_mana = mana
         self.charisma = charisma
         self.luck = luck
+        self.faehigkeiten = []
 
 Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 20, 20, 20)
 Zauberer = Character("Zauberer", 1, 0, 400, 40, 90, 150, 30, 250, 40, 30)
 Paladin = Character("Paladin", 1, 0, 800, 90, 50, 50, 70, 50, 50, 40)
 Schurke = Character("Schurke", 1, 0, 600, 70, 120, 30, 50, 50, 20, 100)
+
+
+from faehigkeitenbaum import Feuerball, Meteor, Blitzschwung
+
+Zauberer.faehigkeiten = [Feuerball, Meteor]
+Barbar.faehigkeiten = [Blitzschwung]
+Paladin.faehigkeiten = []
+Schurke.faehigkeiten = []

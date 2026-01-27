@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 0.0">
+    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP">
       <change afterPath="$PROJECT_DIR$/Testy McTestface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gegner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory_and_items.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/marktplatz.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/faehigkeitenbaum.py" beforeDir="false" afterPath="$PROJECT_DIR$/faehigkeitenbaum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kampfsystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/kampfsystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769434042067</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP">
+      <option name="closed" value="true" />
+      <created>1769515016810</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1769515016810</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Version 0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.0" />
+    <MESSAGE value="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP" />
   </component>
 </project>
