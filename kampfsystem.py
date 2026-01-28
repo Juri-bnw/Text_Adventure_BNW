@@ -117,7 +117,7 @@ def kampf(spieler, gegner_liste):
         print("3) Fliehen")
 
         wahl = input("> ")
-
+        aktuelle_gegner = gegner_liste
         if wahl == "1":
             standard_angriff(spieler, gegner_liste)
 
@@ -144,7 +144,6 @@ def kampf(spieler, gegner_liste):
                 return
             continue
 
-                aktuelle_gegner = [g for g in aktuelle_gegner if g.current_HP > 0]
         if not aktuelle_gegner:
             print("Alle Gegner wurden besiegt!")
             gold_gewinn = random.randint(10, 30)

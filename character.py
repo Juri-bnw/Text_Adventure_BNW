@@ -17,10 +17,10 @@ class Character:
         self.gold = 100
         self.inventar = []
 
-Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 20, 20, 20)
-Zauberer = Character("Zauberer", 1, 0, 400, 40, 90, 150, 30, 250, 40, 30)
-Paladin = Character("Paladin", 1, 0, 800, 90, 50, 50, 70, 50, 50, 40)
-Schurke = Character("Schurke", 1, 0, 600, 70, 120, 30, 50, 50, 20, 100)
+Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 200, 20, 20)
+Zauberer = Character("Zauberer", 1, 0, 400, 40, 90, 150, 30, 500, 40, 30)
+Paladin = Character("Paladin", 1, 0, 800, 90, 50, 50, 70, 200, 50, 40)
+Schurke = Character("Schurke", 1, 0, 600, 70, 120, 30, 50, 200, 20, 100)
 
 
 from faehigkeitenbaum import (

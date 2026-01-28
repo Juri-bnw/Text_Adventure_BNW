@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP">
+    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 1.2&#10;&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag">
       <change afterPath="$PROJECT_DIR$/Testy McTestface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faehigkeitenbaum.py" beforeDir="false" afterPath="$PROJECT_DIR$/faehigkeitenbaum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kampfsystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/kampfsystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,20 +20,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Juri-bnw"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Juri-bnw&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Juri-bnw/Text_Adventure_BNW.git",
-    "accountId": "c659e5ce-d258-46cf-a353-f731504846a3"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Juri-bnw/Text_Adventure_BNW.git&quot;,
+    &quot;accountId&quot;: &quot;c659e5ce-d258-46cf-a353-f731504846a3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -48,22 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.kampfsystem.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.map.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.kampfsystem.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -95,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769515016810</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Version 1.2&#10;&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag">
+      <option name="closed" value="true" />
+      <created>1769521868013</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769521868013</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,7 +114,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -112,6 +135,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Version 0.0" />
     <MESSAGE value="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP" />
+    <MESSAGE value="Version 1.2&#10;&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.2&#10;&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
   </component>
 </project>
