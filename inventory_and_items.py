@@ -31,42 +31,82 @@ grosser_Erfahrungstrank = Gegenstand("großer Erfahrungstrank", "Erfahrungstrank
 ultimativer_Erfahrungstrank = Gegenstand("ultimativer Erfahrungstrank", "Erfahrungstrank",
                                          "+100% Exp")  # +100% Exp bedeutet man bekommt 1 Level pro Trank
 
-Eisenschwert = Gegenstand("Eisenschwert", "Waffe", "+10 Stärke")
+Bronzeschwert = Gegenstand("Bronzeschwert", "Waffe", "+10 Stärke")
 
-Eisenbogen = Gegenstand("Eisenbogen", "Waffe", "+10 Geschicklichkeit")
+Bronzebogen = Gegenstand("Bronzebogen", "Waffe", "+10 Geschicklichkeit")
 
-Eisenstab = Gegenstand("Eisenstab", "Waffe", "+10 Mana")
+Bronzestab = Gegenstand("Bronzestab", "Waffe", "+10 Mana")
 
-Eisendolch = Gegenstand("Eisendolch", "Waffe", "+10 Geschicklichkeit")
+Bronzedolch = Gegenstand("Bronzedolch", "Waffe", "+10 Geschicklichkeit")
 
-Eisenhelm = Gegenstand("Eisenhelm", "Ausrüstung", "+10 HP")
+Bronzehelm = Gegenstand("Bronzehelm", "Ausrüstung", "+10 HP")
 
-Eisenruestung = Gegenstand("Eisenrüstung", "Ausrüstung", "+10 Verteidigung")
+Bronzeruestung = Gegenstand("Bronzerüstung", "Ausrüstung", "+10 Verteidigung")
 
-Eisenarmschienen = Gegenstand("Eisenarmschienen", "Ausrüstung", "+10 Geschicklichkeit")
+Bronzearmschienen = Gegenstand("Bronzearmschienen", "Ausrüstung", "+10 Geschicklichkeit")
 
-Eisenhandschuhe = Gegenstand("Eisenhandschuhe", "Ausrüstung", "+10 Verteidigung")
+Bronzehandschuhe = Gegenstand("Bronzehandschuhe", "Ausrüstung", "+10 Verteidigung")
 
-Eisenhose = Gegenstand("Eisenhose", "Ausrüstung", "+10 Geshicklichkeit")
+Bronzehose = Gegenstand("Bronzehose", "Ausrüstung", "+10 Geschicklichkeit")
 
-Eisenschuhe = Gegenstand("Eisenschuhe", "Ausrüstung", "+10 Geschicklichkeit")
+Bronzeschuhe = Gegenstand("Bronzeschuhe", "Ausrüstung", "+10 Geschicklichkeit")
 
-Silberschwert = Gegenstand("Silberschwert", "Waffe", "+50 Stärke")
+Eisenschwert = Gegenstand("Eisenschwert", "Waffe", "+50 Stärke")
 
-Silberbogen = Gegenstand("Silberbogen", "Waffe", "+50 Geschicklichkeit")
+Eisenbogen = Gegenstand("Eisenbogen", "Waffe", "+50 Geschicklichkeit")
 
-Silberstab = Gegenstand("Silberstab", "Waffe", "+50 Mana")
+Eisenstab = Gegenstand("Eisenstab", "Waffe", "+50 Mana")
 
-Silberdolch = Gegenstand("Silberdolch", "Waffe", "+50 Geschicklichkeit")
+Eisendolch = Gegenstand("Eisendolch", "Waffe", "+50 Geschicklichkeit")
 
-Silberhelm = Gegenstand("Silberhelm", "Ausrüstung", "+50 HP")
+Eisenhelm = Gegenstand("Eisenhelm", "Ausrüstung", "+50 HP")
 
-Silberruestung = Gegenstand("Silberrüstung", "Ausrüstung", "+50 Verteidigung")
+Eisenruestung = Gegenstand("Eisenrüstung", "Ausrüstung", "+50 Verteidigung")
 
-Silberarmschienen = Gegenstand("Silberarmschienen", "Ausrüstung", "+50 Geschicklichkeit")
+Eisenarmschienen = Gegenstand("Eisenarmschienen", "Ausrüstung", "+50 Geschicklichkeit")
 
-Silberhandschuhe = Gegenstand("Silberhandschuhe", "Ausrüstung", "+50 Verteidigung")
+Eisenhandschuhe = Gegenstand("Eisenhandschuhe", "Ausrüstung", "+50 Verteidigung")
 
-Silberhose = Gegenstand("Silberhose", "Ausrüstung", "+50 Geschicklichkeit")
+Eisenhose = Gegenstand("Eisenhose", "Ausrüstung", "+50 Geshicklichkeit")
 
-Silberschuhe = Gegenstand("Silberschuhe", "Ausrüstung", "+50 Geschicklichkeit")
+Eisenschuhe = Gegenstand("Eisenschuhe", "Ausrüstung", "+50 Geschicklichkeit")
+
+Silberschwert = Gegenstand("Silberschwert", "Waffe", "+100 Stärke")
+
+Silberbogen = Gegenstand("Silberbogen", "Waffe", "+100 Geschicklichkeit")
+
+Silberstab = Gegenstand("Silberstab", "Waffe", "+100 Mana")
+
+Silberdolch = Gegenstand("Silberdolch", "Waffe", "+100 Geschicklichkeit")
+
+Silberhelm = Gegenstand("Silberhelm", "Ausrüstung", "+100 HP")
+
+Silberruestung = Gegenstand("Silberrüstung", "Ausrüstung", "+100 Verteidigung")
+
+Silberarmschienen = Gegenstand("Silberarmschienen", "Ausrüstung", "+100 Geschicklichkeit")
+
+Silberhandschuhe = Gegenstand("Silberhandschuhe", "Ausrüstung", "+100 Verteidigung")
+
+Silberhose = Gegenstand("Silberhose", "Ausrüstung", "+100 Geschicklichkeit")
+
+Silberschuhe = Gegenstand("Silberschuhe", "Ausrüstung", "+100 Geschicklichkeit")
+
+Goldschwert = Gegenstand("Goldschwert", "Waffe", "+500 Stärke")
+
+Goldbogen = Gegenstand("Goldbogen", "Waffe", "+500 Geschicklichkeit")
+
+Goldstab = Gegenstand("Goldstab", "Waffe", "+500 Mana")
+
+Golddolch = Gegenstand("Golddolch", "Waffe", "+500 Geschicklichkeit")
+
+Goldhelm = Gegenstand("Goldhelm", "Ausrüstung", "+500 HP")
+
+Goldruestung = Gegenstand("Goldrüstung", "Ausrüstung", "+500 Verteidigung")
+
+Goldarmschienen = Gegenstand("Goldarmschienen", "Ausrüstung", "+500 Geschicklichkeit")
+
+Goldhandschuhe = Gegenstand("Goldhandschuhe", "Ausrüstung", "+500 Verteidigung")
+
+Goldhose = Gegenstand("Goldhose", "Ausrüstung", "+500 Geschicklichkeit")
+
+Goldschuhe = Gegenstand("Goldschuhe", "Ausrüstung", "+500 Geschicklichkeit")
