@@ -6,13 +6,22 @@ MAP_OPTIONEN = [
     "dunkler_wald",
     "verlassene_huette",
     "rasten",
-    "marktplatz"
+    "marktplatz",
+    "ruine",
+    "unterwelt",
+    "schloss",
+    "tempel",
+
 ]
 
 GEGNER_PRO_ORT = {
     "wiese": [gegner.Skelett, gegner.Ratte, gegner.Fledermaus],
-    "dunkler_wald": [gegner.Dunkler_Magier, gegner.Fledermaus],
-    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier]
+    "dunkler_wald": [gegner.Dunkler_Magier, gegner.Alien, gegner.Goblin],
+    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier, gegner.Schleim],
+    "ruine": [gegner.Assassine, gegner.Spinne, gegner.Zombie],
+    "unterwelt": [gegner.Ork, gegner.Drache, gegner.Daemon],
+    "schloss": [gegner.Soldat, gegner.Geist, gegner.Bandit],
+    "tempel": [gegner.Wolf, gegner.Schlange, gegner.Schleim],
 }
 
 
