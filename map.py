@@ -6,13 +6,15 @@ MAP_OPTIONEN = [
     "dunkler_wald",
     "verlassene_huette",
     "rasten",
-    "marktplatz"
+    "marktplatz",
+    "ruine"
 ]
 
 GEGNER_PRO_ORT = {
     "wiese": [gegner.Skelett, gegner.Ratte, gegner.Fledermaus],
     "dunkler_wald": [gegner.Dunkler_Magier, gegner.Fledermaus],
-    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier]
+    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier],
+    "ruine": [gegner.Skelett, gegner.Fledermaus],
 }
 
 

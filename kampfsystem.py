@@ -47,7 +47,7 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
     schaden = berechne_faehigkeitsschaden(spieler, faehigkeit)
 
     if faehigkeit.ziel_typ == "gegner":
-        if faehigkeit.ziel_anzahl == 1:
+        if faehigkeit.ziel_anzahl == "alle":
             ziel = waehle_zufallsgegner(gegner_liste)
             if not ziel:
                 return False
