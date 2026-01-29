@@ -1,16 +1,16 @@
 import random
 import faehigkeitenbaum
-
+import math
 
 def trifft_angriff(angreifer, verteidiger):
-    chance = 70 + (angreifer.dex - verteidiger.dex)
+    chance = 70 + (0.25*(angreifer.dex - verteidiger.dex))
     chance = max(20, min(chance, 90))
     return random.randint(1, 100) <= chance
 
 
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
-    schaden = basis - verteidiger.defense
+    schaden = basis * ((verteidiger.defense / verteidiger.defense + 100))
     return max(1, schaden)
 
 
