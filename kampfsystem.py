@@ -10,7 +10,8 @@ def trifft_angriff(angreifer, verteidiger):
 
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
-    schaden = basis * ((verteidiger.defense / verteidiger.defense + 100))
+    schaden_reduktion = verteidiger.defense / (verteidiger.defense + 100)
+    schaden = round(basis * schaden_reduktion)
     return max(1, schaden)
 
 
