@@ -1,16 +1,16 @@
 class Faehigkeit:
     def __init__(
-        self,
-        name,
-        mana_cost,
-        base_dmg=0,
-        scale_strength=0.0,
-        scale_dex=0.0,
-        scale_energy=0.0,
-        scale_charisma=0.0,
-        scale_luck=0.0,
-        ziel_typ="gegner",
-        ziel_anzahl="alle"
+            self,
+            name,
+            mana_cost,
+            base_dmg=0,
+            scale_strength=0.0,
+            scale_dex=0.0,
+            scale_energy=0.0,
+            scale_charisma=0.0,
+            scale_luck=0.0,
+            ziel_typ="gegner",
+            ziel_anzahl=1
     ):
         self.name = name
         self.mana_cost = mana_cost
@@ -29,7 +29,7 @@ Feuerball = Faehigkeit(
     base_dmg=25,
     scale_energy=0.6,
     ziel_typ="gegner",
-    ziel_anzahl="alle"
+    ziel_anzahl=2
 )
 
 Blitzschwung = Faehigkeit(
@@ -52,7 +52,7 @@ Meteor = Faehigkeit(
     ziel_anzahl="alle"
 )
 
-
+#Neue Fähigkeiten
 Frostnova = Faehigkeit(
     name="Frostnova",
     mana_cost=30,

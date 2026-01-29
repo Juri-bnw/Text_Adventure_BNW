@@ -7,14 +7,20 @@ MAP_OPTIONEN = [
     "verlassene_huette",
     "rasten",
     "marktplatz",
-    "ruine"
+    "ruine",
+    "wüste",
+    "gasthof",
+    "ruinen",
 ]
 
 GEGNER_PRO_ORT = {
-    "wiese": [gegner.Skelett, gegner.Ratte, gegner.Fledermaus],
-    "dunkler_wald": [gegner.Dunkler_Magier, gegner.Fledermaus],
-    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier],
     "ruine": [gegner.Skelett, gegner.Fledermaus],
+    "wiese": [gegner.Skelett, gegner.Ratte, gegner.Fledermaus, gegner.Schleim],
+    "dunkler_wald": [gegner.Dunkler_Magier, gegner.Fledermaus, gegner.Schleim, gegner.Spinne, gegner.Zombie,
+                     gegner.Wolf],
+    "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier, gegner.Spinne, gegner.Zombie, ],
+    "wüste": [gegner.Skelett, gegner.Zombie, gegner.Spinne, gegner.Schlange, ],
+    "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne]
 }
 
 
@@ -35,20 +41,32 @@ def erkunden(ort):
 
 
 def fuehre_aktion_aus(aktion, spieler):
-    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette":
+    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste":
         return erkunden(aktion)
     elif aktion == "marktplatz":
         return erkunden("marktplatz")
+    elif aktion == "gasthof":
+        gasthof(spieler)
+        return None
     elif aktion == "rasten":
         rasten(spieler)
-        return None
-    elif aktion == "nichts":
-        print("Du gehst ein Stück weiter. Nichts passiert.")
         return None
 
 
 def rasten(spieler):
     hp_heilung = int(spieler.max_HP * 0.1)
+
+    spieler.current_HP += hp_heilung
+    if spieler.current_HP > spieler.max_HP:
+        spieler.current_HP = spieler.max_HP
+        hp_heilung = 0
+        print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
+    else:
+        print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
+
+
+def gasthof(spieler):
+    hp_heilung = int(spieler.max_HP * 0.25)
 
     spieler.current_HP += hp_heilung
     if spieler.current_HP > spieler.max_HP:

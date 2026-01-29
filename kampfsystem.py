@@ -1,15 +1,18 @@
 import random
 import faehigkeitenbaum
 
+
 def trifft_angriff(angreifer, verteidiger):
     chance = 70 + (angreifer.dex - verteidiger.dex)
     chance = max(20, min(chance, 90))
     return random.randint(1, 100) <= chance
 
+
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
     schaden = basis - verteidiger.defense
     return max(1, schaden)
+
 
 def berechne_faehigkeitsschaden(spieler, faehigkeit):
     skaliert = int(faehigkeit.base_dmg +
@@ -20,11 +23,13 @@ def berechne_faehigkeitsschaden(spieler, faehigkeit):
                    spieler.luck * getattr(faehigkeit, "scale_luck", 0))
     return skaliert
 
+
 def waehle_zufallsgegner(gegner_liste):
     lebende = [g for g in gegner_liste if g.current_HP > 0]
     if not lebende:
         return None
     return random.choice(lebende)
+
 
 def standard_angriff(spieler, gegner_liste):
     ziel = waehle_zufallsgegner(gegner_liste)
@@ -37,6 +42,7 @@ def standard_angriff(spieler, gegner_liste):
         print(f"{spieler.name} trifft {ziel.name} für {schaden} Schaden!")
     else:
         print(f"{spieler.name} verfehlt!")
+
 
 def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
     if spieler.current_mana < faehigkeit.mana_cost:
@@ -63,9 +69,10 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
 
     elif faehigkeit.ziel_typ == "spieler":
         spieler.current_HP += schaden
-        print(f"{spieler.name} heilt sich um {schaden} HP")         # FÜR HEILUNG !!!! --> hier ist schaden = heilung
+        print(f"{spieler.name} heilt sich um {schaden} HP")  # FÜR HEILUNG !!!! --> hier ist schaden = heilung
 
     return True
+
 
 ######################################################## PLATZHALTER FÜR ZUKUNFT - DA KOMMEN DIE SKILL REIN ######################
 
@@ -73,6 +80,7 @@ def gegenstaende_menue(spieler):
     print("\nGegenstände:\nNoch keine Gegenstände vorhanden.")
     input("Weiter...")
     return False
+
 
 #####################################################################################################################
 
@@ -85,6 +93,7 @@ def gegner_phase(gegner_liste, spieler):
         if spieler.current_HP <= 0:
             print(f"{spieler.name} ist besiegt...")
             return
+
 
 def fliehen(spieler, gegner_liste):
     # Zufälliger Gegner für Fluchtchance
@@ -99,7 +108,6 @@ def fliehen(spieler, gegner_liste):
     else:
         print(f"{spieler.name} konnte nicht fliehen!")
         return False
-
 
 
 ########################################################## DER KERN: DER KAMPF !!! ####################################
@@ -122,10 +130,6 @@ def kampf(spieler, gegner_liste):
             standard_angriff(spieler, gegner_liste)
 
         elif wahl == "2":
-            if not spieler.faehigkeiten:
-                print("Du hast noch keine Fähigkeiten!")            # zurzeit haben nur Barbr und Zauberer skills - ob man skill-los startet und später welche lernt - mal gucken
-                continue
-
             print("\nDeine Fähigkeiten:")
             for i, f in enumerate(spieler.faehigkeiten, start=1):
                 print(f"{i}) {f.name} (Mana: {f.mana_cost})")
@@ -146,7 +150,7 @@ def kampf(spieler, gegner_liste):
 
         if not aktuelle_gegner:
             print("Alle Gegner wurden besiegt!")
-            gold_gewinn = random.randint(10, 30)
+            gold_gewinn = random.randint(5, 10)
             spieler.gold += gold_gewinn
             print(f"Du hast {gold_gewinn} Gold gefunden! (Gesamt: {spieler.gold})")
             return
