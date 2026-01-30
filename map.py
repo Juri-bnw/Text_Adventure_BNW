@@ -1,5 +1,6 @@
 import random
 import gegner
+import copy
 
 MAP_OPTIONEN = [
     "wiese",
@@ -14,7 +15,6 @@ MAP_OPTIONEN = [
     "wüste",
     "gasthof",
     "ruinen",
-    "inventar"
 ]
 
 GEGNER_PRO_ORT = {
@@ -38,7 +38,7 @@ def erkunden(ort):
     moegliche_gegner = GEGNER_PRO_ORT[ort]
 
     anzahl_gegner = random.randint(1, 3)  # 1 bis 3 Gegner
-    gegner_liste = random.choices(moegliche_gegner, k=anzahl_gegner)
+    gegner_liste = [copy.deepcopy(random.choice(moegliche_gegner)) for _ in range(anzahl_gegner)]
 
     print("Gegner tauchen auf:")
     for g in gegner_liste:
@@ -109,6 +109,9 @@ def map_loop(spieler):
 
     if aktionen_zaehler >= 5:
         tag += 1
+        print("------------------------------------------------------------")
+        print("                EIN NEUER TAG BEGINNT")
+        print("------------------------------------------------------------")
         aktionen_zaehler = 0
         print("\nEin Tag vergeht...\n")
         return None

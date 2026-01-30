@@ -1,7 +1,3 @@
-from ctypes.wintypes import tagRECT
-import map
-
-
 class Gegner:
     def __init__(self, name, level, HP, strength, dex, energy, defense, exp_give):
         self.name = name
@@ -19,7 +15,7 @@ Fledermaus = Gegner("Fledermaus", 1, 20, 10, 25, 0, 5, 10)
 
 Schleim = Gegner("Schleim", 1, 20, 15, 20, 0, 15, 10)
 
-Skelett = Gegner("Skelett", 1, 50, 10, 15, 0, 0, 10)
+Skelett = Gegner("Skelett", 1, 50, 10, 15, 0, 1, 10)
 
 Spinne = Gegner("Spinne", 1, 30, 15, 20, 0, 15, 10)
 
