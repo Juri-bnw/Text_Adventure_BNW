@@ -2,17 +2,18 @@ import random
 import faehigkeitenbaum
 import math
 import inventory_and_items
+from character import erhalte_exp, exp_fuer_naechstes_level
 
 
 def trifft_angriff(angreifer, verteidiger):
-    chance = 70 + (0.25*(angreifer.dex - verteidiger.dex))
+    chance = 70 + (0.25 * (angreifer.dex - verteidiger.dex))
     chance = max(30, min(chance, 95))
     return random.randint(1, 100) <= chance
 
 
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
-    schaden_reduktion = (1- (verteidiger.defense / (verteidiger.defense + 100)))
+    schaden_reduktion = (1 - (verteidiger.defense / (verteidiger.defense + 100)))
     schaden = round(basis * schaden_reduktion)
     return max(1, schaden)
 
@@ -61,10 +62,10 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
             for g in gegner_liste:
                 if trifft_angriff(spieler, g) == True:
                     if g.current_HP > 0:
-                        schaden_reduktion = (1- ((g.defense / (g.defense + 100))))
+                        schaden_reduktion = (1 - ((g.defense / (g.defense + 100))))
                         g.current_HP -= round(max(1, (schaden * schaden_reduktion)))
                         g.current_HP = max(0, g.current_HP)
-                        print(f"  {g.name} erleidet", round(max(1, (schaden * schaden_reduktion))) ," Schaden")
+                        print(f"  {g.name} erleidet", round(max(1, (schaden * schaden_reduktion))), " Schaden")
                 if trifft_angriff(spieler, g) == False:
                     print(f"Angriff verfehlt {g}")
         else:
@@ -72,10 +73,11 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
             if not ziel:
                 return False
             if trifft_angriff(spieler, ziel) == True:
-                schaden_reduktion = (1- ((ziel.defense / (ziel.defense + 100))))
+                schaden_reduktion = (1 - ((ziel.defense / (ziel.defense + 100))))
                 ziel.current_HP -= round(max(1, (schaden * schaden_reduktion)))
                 ziel.current_HP = max(0, ziel.current_HP)
-                print(f"{spieler.name} wirkt {faehigkeit.name} auf {ziel.name} (", round(max(1, (schaden * schaden_reduktion))) ," Schaden)")
+                print(f"{spieler.name} wirkt {faehigkeit.name} auf {ziel.name} (",
+                      round(max(1, (schaden * schaden_reduktion))), " Schaden)")
             if trifft_angriff(spieler, ziel) == False:
                 print("Angriff verfehlt ")
 
@@ -205,7 +207,7 @@ def kampf(spieler, gegner_liste):
                     turn_taken = True
 
         if not any(g.current_HP > 0 for g in gegner_liste):
-            print("\nAlle Gegner wurden besiegt!")
+            print("\nAlle Gegner wurden besiegt!\n")
             gold_gesamt = 0
             exp_gesamt = 0
             for g in gegner_liste:
@@ -214,9 +216,10 @@ def kampf(spieler, gegner_liste):
                 exp_gesamt += g.exp_give
 
             spieler.gold += gold_gesamt
-            spieler.exp += exp_gesamt
-            print(f"Du hast {gold_gesamt} Gold und {exp_gesamt} EP erhalten!")
-            print(f"Aktuelles Gold: {spieler.gold}")
+            spieler.erhalte_exp(exp_gesamt)
+            print(f"EXP: {spieler.exp} / {spieler.exp_fuer_naechstes_level()}\n")
+            print(f"Du hast {gold_gesamt} Gold gesammelt!\n")
+            print(f"Aktuelles Gold: {spieler.gold}\n")
             return
 
         if turn_taken:
