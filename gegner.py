@@ -1,7 +1,3 @@
-from ctypes.wintypes import tagRECT
-import map
-
-
 class Gegner:
     def __init__(self, name, level, HP, strength, dex, energy, defense, exp_give):
         self.name = name

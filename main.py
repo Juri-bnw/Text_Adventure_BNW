@@ -1,17 +1,18 @@
-import random
 import kampfsystem
 import map
-import gegner
 import character
 import marktplatz
 
 
 def charakter_auswahl():
-    print("Wähle deinen Charakter:")
-    print("1) Barbar")
-    print("2) Zauberer")
-    print("3) Paladin")
-    print("4) Schurke")
+    print("================================================================")
+    print("                DAS BNW-ADVENTURE")
+    print("================================================================\n\n")
+    print("  Wähle deinen Charakter:")
+    print("  1) Barbar")
+    print("  2) Zauberer")
+    print("  3) Paladin")
+    print("  4) Schurke")
 
     wahl = input("> ")
 
@@ -38,7 +39,7 @@ def spiel_start():
 
 
 def spiel_loop(spieler):
-    while True:
+    while spieler.current_HP > 0:
         aktion = map.map_loop(spieler)
 
         # Wenn aktion None ist (Tag vergeht), überspringen wir die Ausführung
@@ -56,6 +57,7 @@ def spiel_loop(spieler):
                 kampfsystem.kampf(spieler, gegner_liste)
             elif ergebnis[0] == "marktplatz":
                 marktplatz.zeige_marktplatz(spieler)
+    quit("Sie haben verloren")
 
 
 spiel_start()
