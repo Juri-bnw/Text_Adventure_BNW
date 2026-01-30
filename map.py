@@ -8,6 +8,9 @@ MAP_OPTIONEN = [
     "rasten",
     "marktplatz",
     "ruine",
+    "unterwelt",
+    "schloss",
+    "tempel",
     "wüste",
     "gasthof",
     "ruinen",
@@ -22,6 +25,9 @@ GEGNER_PRO_ORT = {
     "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier, gegner.Spinne, gegner.Zombie, ],
     "wüste": [gegner.Skelett, gegner.Zombie, gegner.Spinne, gegner.Schlange, ],
     "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne]
+    "unterwelt": [gegner.Ork, gegner.Drache, gegner.Daemon]
+    "schloss": [gegner.Soldat, gegner.Geist, gegner.Bandit]
+    "tempel": [gegner.Wolf, gegner.Schlange, gegner.Schleim]
 }
 
 
@@ -42,7 +48,7 @@ def erkunden(ort):
 
 
 def fuehre_aktion_aus(aktion, spieler):
-    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste":
+    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste" or aktion == "unterwelt" or aktion == "schloss" or aktion == "tempel":
         return erkunden(aktion)
     elif aktion == "marktplatz":
         return "marktplatz", None
