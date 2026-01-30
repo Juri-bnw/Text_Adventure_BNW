@@ -24,9 +24,9 @@ GEGNER_PRO_ORT = {
                      gegner.Wolf],
     "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier, gegner.Spinne, gegner.Zombie, ],
     "wüste": [gegner.Skelett, gegner.Zombie, gegner.Spinne, gegner.Schlange, ],
-    "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne]
-    "unterwelt": [gegner.Ork, gegner.Drache, gegner.Daemon]
-    "schloss": [gegner.Soldat, gegner.Geist, gegner.Bandit]
+    "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne],
+    "unterwelt": [gegner.Ork, gegner.Drache, gegner.Daemon],
+    "schloss": [gegner.Soldat, gegner.Geist, gegner.Bandit],
     "tempel": [gegner.Wolf, gegner.Schlange, gegner.Schleim]
 }
 
