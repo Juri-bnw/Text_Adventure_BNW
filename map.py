@@ -1,6 +1,6 @@
 import random
 import gegner
-import inventory_and_items
+import copy
 
 MAP_OPTIONEN = [
     "wiese",
@@ -9,6 +9,9 @@ MAP_OPTIONEN = [
     "rasten",
     "marktplatz",
     "ruine",
+    "unterwelt",
+    "schloss",
+    "tempel",
     "wüste",
     "gasthof",
     "ruinen",
@@ -21,7 +24,10 @@ GEGNER_PRO_ORT = {
                      gegner.Wolf],
     "verlassene_huette": [gegner.Skelett, gegner.Dunkler_Magier, gegner.Spinne, gegner.Zombie, ],
     "wüste": [gegner.Skelett, gegner.Zombie, gegner.Spinne, gegner.Schlange, ],
-    "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne]
+    "ruinen": [gegner.Geist, gegner.Bandit, gegner.Dunkler_Magier, gegner.Goblin, gegner.Spinne],
+    "unterwelt": [gegner.Ork, gegner.Drache, gegner.Daemon],
+    "schloss": [gegner.Soldat, gegner.Geist, gegner.Bandit],
+    "tempel": [gegner.Wolf, gegner.Schlange, gegner.Schleim]
 }
 
 
@@ -32,7 +38,7 @@ def erkunden(ort):
     moegliche_gegner = GEGNER_PRO_ORT[ort]
 
     anzahl_gegner = random.randint(1, 3)  # 1 bis 3 Gegner
-    gegner_liste = random.choices(moegliche_gegner, k=anzahl_gegner)
+    gegner_liste = [copy.deepcopy(random.choice(moegliche_gegner)) for _ in range(anzahl_gegner)]
 
     print("Gegner tauchen auf:")
     for g in gegner_liste:
@@ -42,7 +48,7 @@ def erkunden(ort):
 
 
 def fuehre_aktion_aus(aktion, spieler):
-    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste":
+    if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste" or aktion == "unterwelt" or aktion == "schloss" or aktion == "tempel":
         return erkunden(aktion)
     elif aktion == "marktplatz":
         return "marktplatz", None
@@ -52,6 +58,9 @@ def fuehre_aktion_aus(aktion, spieler):
     elif aktion == "rasten":
         rasten(spieler)
         return None
+    elif aktion == "inventar":
+        return "inventar", None
+
 
 def rasten(spieler):
     hp_heilung = int(spieler.max_HP * 0.1)
@@ -73,7 +82,6 @@ def gasthof(spieler):
         print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
     else:
         print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
-
 
 
 aktionen_zaehler = 0
@@ -100,6 +108,9 @@ def map_loop(spieler):
 
     if aktionen_zaehler >= 5:
         tag += 1
+        print("------------------------------------------------------------")
+        print("                EIN NEUER TAG BEGINNT")
+        print("------------------------------------------------------------")
         aktionen_zaehler = 0
         print("\nEin Tag vergeht...\n")
         return None
