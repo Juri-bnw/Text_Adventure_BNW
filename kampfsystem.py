@@ -2,7 +2,7 @@ import random
 import faehigkeitenbaum
 import math
 import inventory_and_items
-from character import erhalte_exp, exp_fuer_naechstes_level
+import character
 
 
 def trifft_angriff(angreifer, verteidiger):
