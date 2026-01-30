@@ -1,5 +1,6 @@
 import random
 import gegner
+import inventory_and_items
 
 MAP_OPTIONEN = [
     "wiese",
@@ -11,7 +12,6 @@ MAP_OPTIONEN = [
     "wüste",
     "gasthof",
     "ruinen",
-    "inventar"
 ]
 
 GEGNER_PRO_ORT = {
@@ -52,9 +52,6 @@ def fuehre_aktion_aus(aktion, spieler):
     elif aktion == "rasten":
         rasten(spieler)
         return None
-    elif aktion == "inventar":
-        return "inventar", None
-
 
 def rasten(spieler):
     hp_heilung = int(spieler.max_HP * 0.1)

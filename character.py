@@ -14,7 +14,7 @@ class Character:
         self.charisma = charisma
         self.luck = luck
         self.faehigkeiten = []
-        self.gold = 100
+        self.gold = 1000
         self.inventar = []
 
 Barbar = Character("Barbar", 1, 0, 1000, 100, 70, 10, 70, 200, 20, 20)

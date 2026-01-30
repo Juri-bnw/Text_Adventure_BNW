@@ -12,7 +12,7 @@ def trifft_angriff(angreifer, verteidiger):
 
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
-    schaden_reduktion = 100 / (verteidiger.defense + 100)
+    schaden_reduktion = verteidiger.defense / (verteidiger.defense + 100)
     schaden = round(basis * schaden_reduktion)
     return max(1, schaden)
 
@@ -150,12 +150,12 @@ def fliehen(spieler, gegner_liste):
 def kampf(spieler, gegner_liste):
     print("\n Kampf beginnt!")
     while spieler.current_HP > 0 and any(g.current_HP > 0 for g in gegner_liste):
-        print(
-            f"\n{spieler.name} HP: {spieler.current_HP}/{spieler.max_HP} | Mana: {spieler.current_mana}/{spieler.max_mana}")
+        print(f"\n{spieler.name} HP: {spieler.current_HP}/{spieler.max_HP} | Mana: {spieler.current_mana}/{spieler.max_mana}")
         for g in gegner_liste:
             if g.current_HP > 0:
                 print(f"{g.name} HP: {g.current_HP}")
 
+        turn_taken = False
         print("\nAktion wählen:")
         print("1) Standardangriff")
         print("2) Fähigkeiten")
@@ -163,7 +163,6 @@ def kampf(spieler, gegner_liste):
         print("4) Inventar")
 
         wahl = input("> ")
-        turn_taken = False
 
         if wahl == "1":
             standard_angriff(spieler, gegner_liste)
@@ -179,23 +178,20 @@ def kampf(spieler, gegner_liste):
                     turn_taken = True
             else:
                 print("Ungültige Auswahl")
-                continue
         elif wahl == "3":
             if fliehen(spieler, gegner_liste):
                 return
-            turn_taken = True
+            turn_taken = False
         elif wahl == "4":
             if gegenstaende_menue(spieler):
-                turn_taken = True
-            else:
-                continue
+                turn_taken = False
 
         if not any(g.current_HP > 0 for g in gegner_liste):
             print("\nAlle Gegner wurden besiegt!")
             gold_gesamt = 0
             exp_gesamt = 0
             for g in gegner_liste:
-                gold_belohnung = random.randint(10, 30) + (g.level * 5)
+                gold_belohnung = random.randint(10, 30) + (g.level * 2)
                 gold_gesamt += gold_belohnung
                 exp_gesamt += g.exp_give
 

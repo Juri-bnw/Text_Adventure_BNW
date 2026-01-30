@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="Version 1.2&#10;- marktplatz.py hinzgefügt am 27.01.26, es ist ein ort die spieler kann mit freundliche NPC's interaktion machen und items kaufen und verkaufen.&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag">
-      <change beforePath="$PROJECT_DIR$/.idea/Text_Adventure.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Text_Adventure.iml" afterDir="false" />
+    <list default="true" id="27c06566-9554-4221-bcf9-cc925a977d39" name="Changes" comment="- Hab ich den inventory_and_items.py hinzufügt, aber bitte achte mit den kampfsystem weil es ist das allte version kampfsystem.py.&#10;&#10;Version 1.2&#10;- marktplatz.py hinzgefügt am 27.01.26, es ist ein ort die spieler kann mit freundliche NPC's interaktion machen und items kaufen und verkaufen.&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faehigkeitenbaum.py" beforeDir="false" afterPath="$PROJECT_DIR$/faehigkeitenbaum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory_and_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventory_and_items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gegner.py" beforeDir="false" afterPath="$PROJECT_DIR$/gegner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kampfsystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/kampfsystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marktplatz.py" beforeDir="false" afterPath="$PROJECT_DIR$/marktplatz.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +57,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.character.executor": "Run",
     "Python.kampfsystem.executor": "Run",
     "Python.main.executor": "Run",
     "Python.map.executor": "Run",
@@ -94,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769188271187</updated>
-      <workItem from="1769691194944" duration="7523000" />
+      <workItem from="1769691194944" duration="11624000" />
     </task>
     <task id="LOCAL-00001" summary="Version 0.0">
       <option name="closed" value="true" />
@@ -128,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769608061965</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Hab ich den inventory_and_items.py hinzufügt, aber bitte achte mit den kampfsystem weil es ist das allte version kampfsystem.py.&#10;&#10;Version 1.2&#10;- marktplatz.py hinzgefügt am 27.01.26, es ist ein ort die spieler kann mit freundliche NPC's interaktion machen und items kaufen und verkaufen.&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag">
+      <option name="closed" value="true" />
+      <created>1769767313155</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1769767313155</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,11 +169,14 @@
     <MESSAGE value="Version 1.1&#10;&#10;- Character, Gegner, Gegenstände wurde in einzelne Module aufgeteilt&#10;&#10;- hp --&gt; max_HP und current_HP" />
     <MESSAGE value="Version 1.2&#10;&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
     <MESSAGE value="Version 1.2.1&#10;&#10;- Marcel hat Gegner hinzugefügt&#10;- Mustafa hat Skills und Marktplatz hinzugefügt&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.2.1&#10;&#10;- Marcel hat Gegner hinzugefügt&#10;- Mustafa hat Skills und Marktplatz hinzugefügt&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
+    <MESSAGE value="- Hab ich den inventory_and_items.py hinzufügt, aber bitte achte mit den kampfsystem weil es ist das allte version kampfsystem.py.&#10;&#10;Version 1.2&#10;- marktplatz.py hinzgefügt am 27.01.26, es ist ein ort die spieler kann mit freundliche NPC's interaktion machen und items kaufen und verkaufen.&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Hab ich den inventory_and_items.py hinzufügt, aber bitte achte mit den kampfsystem weil es ist das allte version kampfsystem.py.&#10;&#10;Version 1.2&#10;- marktplatz.py hinzgefügt am 27.01.26, es ist ein ort die spieler kann mit freundliche NPC's interaktion machen und items kaufen und verkaufen.&#10;- faehigkeitenbaum.py hinzugefügt und Attribute wurden verändert. &#10;- character.py geändert. character haben nun eine Liste von Fähigkeiten auf die Sie Zugriff haben.&#10;&#10;Big Change:&#10;- Kämpfe können nun gegen mehrere Gegner sein. Spieler Angriff können 1 oder alle Ziele treffen. Einzel Angriffe trifft einen zufälligen gegner.&#10;&#10;Bekannte Bugs:&#10;- Wenn zwei/drei Gegner den selben typ haben, also zwei mal fledermaus wird dieser nur als ein gegner angesehen&#10;- AoE spells treffen jeden gegner einmal verursachen aber aoe dmg --&gt; ungewolltes multi-cast mit multihit&#10;----&gt; DMG calculation überarbeiten&#10;&#10;Ziel:&#10;Print in Konsole sieht langweilig und unübersichtlich aus: In die prints \n und Farbe/Fett einfügen&#10;Gegenstände hinzufügen --&gt; Unterscheiden zwischen Ausrüstung und Consumables&#10;- Inventar Einfügen&#10;- Marktplace einfügen&#10;- Gegner Scaling basierend auf Tag" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Text_Adventure_BNW$main.coverage" NAME="main Coverage Results" MODIFIED="1769765816003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Text_Adventure_BNW$main.coverage" NAME="main Coverage Results" MODIFIED="1769771243718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Text_Adventure_BNW$faehigkeitenbaum.coverage" NAME="faehigkeitenbaum Coverage Results" MODIFIED="1769687396478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Text_Adventure_BNW$kampfsystem.coverage" NAME="kampfsystem Coverage Results" MODIFIED="1769686798784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Text_Adventure_BNW$map.coverage" NAME="map Coverage Results" MODIFIED="1769771202086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Text_Adventure_BNW$character.coverage" NAME="character Coverage Results" MODIFIED="1769770887049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
