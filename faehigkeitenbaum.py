@@ -29,7 +29,7 @@ Feuerball = Faehigkeit(
     base_dmg=25,
     scale_energy=0.6,
     ziel_typ="gegner",
-    ziel_anzahl=2
+    ziel_anzahl="alle"
 )
 
 Blitzschwung = Faehigkeit(

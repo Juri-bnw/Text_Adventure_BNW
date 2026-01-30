@@ -1,16 +1,18 @@
 import random
 import faehigkeitenbaum
 import math
+import inventory_and_items
+
 
 def trifft_angriff(angreifer, verteidiger):
-    chance = 70 + (0.25*(angreifer.dex - verteidiger.dex))
+    chance = 70 + (0.25 * (angreifer.dex - verteidiger.dex))
     chance = max(20, min(chance, 90))
     return random.randint(1, 100) <= chance
 
 
 def berechne_schaden(angreifer, verteidiger):
     basis = angreifer.strength + random.randint(0, angreifer.strength // 2)
-    schaden_reduktion = verteidiger.defense / (verteidiger.defense + 100)
+    schaden_reduktion = 100 / (verteidiger.defense + 100)
     schaden = round(basis * schaden_reduktion)
     return max(1, schaden)
 
@@ -54,7 +56,7 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
     schaden = berechne_faehigkeitsschaden(spieler, faehigkeit)
 
     if faehigkeit.ziel_typ == "gegner":
-        if faehigkeit.ziel_anzahl == "alle":
+        if faehigkeit.ziel_anzahl == 1:
             ziel = waehle_zufallsgegner(gegner_liste)
             if not ziel:
                 return False
@@ -70,20 +72,55 @@ def nutze_faehigkeit(spieler, gegner_liste, faehigkeit):
 
     elif faehigkeit.ziel_typ == "spieler":
         spieler.current_HP += schaden
-        print(f"{spieler.name} heilt sich um {schaden} HP")  # FÜR HEILUNG !!!! --> hier ist schaden = heilung
+        print(f"{spieler.name} heilt sich um {schaden} HP")
 
     return True
 
 
-######################################################## PLATZHALTER FÜR ZUKUNFT - DA KOMMEN DIE SKILL REIN ######################
-
 def gegenstaende_menue(spieler):
-    print("\nGegenstände:\nNoch keine Gegenstände vorhanden.")
-    input("Weiter...")
+    if not spieler.inventar:
+        print("\nInventar ist leer.")
+        input("Weiter...")
+        return False
+
+    print("\nDein Inventar:")
+    nutzbare = [item for item in spieler.inventar if item.typ in ["Heiltrank", "Manatrank"]]
+
+    if not nutzbare:
+        print("Keine nutzbaren Gegenstände (Tränke) im Kampf.")
+        input("Weiter...")
+        return False
+
+    for i, item in enumerate(nutzbare, 1):
+        print(f"{i}) {item.name} ({item.boni})")
+    print(f"{len(nutzbare) + 1}) Zurück")
+
+    wahl = input("> ")
+    if wahl.isdigit():
+        idx = int(wahl) - 1
+        if idx == len(nutzbare):
+            return False
+        if 0 <= idx < len(nutzbare):
+            item = nutzbare[idx]
+            bonus_val = inventory_and_items.parse_bonus(item.boni)
+
+            if item.typ == "Heiltrank":
+                if "%" in item.boni:
+                    spieler.current_HP = spieler.max_HP
+                else:
+                    spieler.current_HP = min(spieler.max_HP, spieler.current_HP + bonus_val)
+                print(f"Du nutzt {item.name}!")
+            elif item.typ == "Manatrank":
+                if "%" in item.boni:
+                    spieler.current_mana = spieler.max_mana
+                else:
+                    spieler.current_mana = min(spieler.max_mana, spieler.current_mana + bonus_val)
+                print(f"Du nutzt {item.name}!")
+
+            spieler.inventar.remove(item)
+            return True
     return False
 
-
-#####################################################################################################################
 
 def gegner_phase(gegner_liste, spieler):
     for g in gegner_liste:
@@ -97,7 +134,6 @@ def gegner_phase(gegner_liste, spieler):
 
 
 def fliehen(spieler, gegner_liste):
-    # Zufälliger Gegner für Fluchtchance
     ziel = waehle_zufallsgegner(gegner_liste)
     if not ziel:
         return True
@@ -111,56 +147,63 @@ def fliehen(spieler, gegner_liste):
         return False
 
 
-########################################################## DER KERN: DER KAMPF !!! ####################################
-
 def kampf(spieler, gegner_liste):
-    spieler.current_mana = spieler.max_mana
     print("\n Kampf beginnt!")
     while spieler.current_HP > 0 and any(g.current_HP > 0 for g in gegner_liste):
-        print(f"\n{spieler.name} HP: {spieler.current_HP} | Mana: {spieler.current_mana}")
+        print(
+            f"\n{spieler.name} HP: {spieler.current_HP}/{spieler.max_HP} | Mana: {spieler.current_mana}/{spieler.max_mana}")
         for g in gegner_liste:
-            print(f"{g.name} HP: {g.current_HP}")
+            if g.current_HP > 0:
+                print(f"{g.name} HP: {g.current_HP}")
+
         print("\nAktion wählen:")
         print("1) Standardangriff")
         print("2) Fähigkeiten")
         print("3) Fliehen")
+        print("4) Inventar")
 
         wahl = input("> ")
-        aktuelle_gegner = gegner_liste
+        turn_taken = False
+
         if wahl == "1":
             standard_angriff(spieler, gegner_liste)
-
+            turn_taken = True
         elif wahl == "2":
             print("\nDeine Fähigkeiten:")
             for i, f in enumerate(spieler.faehigkeiten, start=1):
                 print(f"{i}) {f.name} (Mana: {f.mana_cost})")
             wahl_skill = input("> ")
-
             if wahl_skill.isdigit() and 1 <= int(wahl_skill) <= len(spieler.faehigkeiten):
                 skill = spieler.faehigkeiten[int(wahl_skill) - 1]
-                nutze_faehigkeit(spieler, gegner_liste, skill)
-
+                if nutze_faehigkeit(spieler, gegner_liste, skill):
+                    turn_taken = True
             else:
                 print("Ungültige Auswahl")
                 continue
-
         elif wahl == "3":
             if fliehen(spieler, gegner_liste):
                 return
-            continue
+            turn_taken = True
+        elif wahl == "4":
+            if gegenstaende_menue(spieler):
+                turn_taken = True
+            else:
+                continue
 
-        if not aktuelle_gegner:
-            print("Alle Gegner wurden besiegt!")
-            gold_gewinn = random.randint(5, 10)
-            spieler.gold += gold_gewinn
-            print(f"Du hast {gold_gewinn} Gold gefunden! (Gesamt: {spieler.gold})")
+        if not any(g.current_HP > 0 for g in gegner_liste):
+            print("\nAlle Gegner wurden besiegt!")
+            gold_gesamt = 0
+            exp_gesamt = 0
+            for g in gegner_liste:
+                gold_belohnung = random.randint(10, 30) + (g.level * 5)
+                gold_gesamt += gold_belohnung
+                exp_gesamt += g.exp_give
+
+            spieler.gold += gold_gesamt
+            spieler.exp += exp_gesamt
+            print(f"Du hast {gold_gesamt} Gold und {exp_gesamt} EP erhalten!")
+            print(f"Aktuelles Gold: {spieler.gold}")
             return
-        gegner_phase(aktuelle_gegner, spieler)
 
-        gegner_liste = [g for g in gegner_liste if g.current_HP > 0]
-
-        if not gegner_liste:
-            print("Alle Gegner wurden besiegt!")
-            return
-
-        gegner_phase(gegner_liste, spieler)
+        if turn_taken:
+            gegner_phase(gegner_liste, spieler)

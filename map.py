@@ -11,6 +11,7 @@ MAP_OPTIONEN = [
     "wüste",
     "gasthof",
     "ruinen",
+    "inventar"
 ]
 
 GEGNER_PRO_ORT = {
@@ -44,13 +45,15 @@ def fuehre_aktion_aus(aktion, spieler):
     if aktion == "wiese" or aktion == "dunkler_wald" or aktion == "verlassene_huette" or aktion == "ruinen" or aktion == "ruine" or aktion == "wüste":
         return erkunden(aktion)
     elif aktion == "marktplatz":
-        return erkunden("marktplatz")
+        return "marktplatz", None
     elif aktion == "gasthof":
         gasthof(spieler)
         return None
     elif aktion == "rasten":
         rasten(spieler)
         return None
+    elif aktion == "inventar":
+        return "inventar", None
 
 
 def rasten(spieler):
@@ -59,7 +62,6 @@ def rasten(spieler):
     spieler.current_HP += hp_heilung
     if spieler.current_HP > spieler.max_HP:
         spieler.current_HP = spieler.max_HP
-        hp_heilung = 0
         print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
     else:
         print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
@@ -71,10 +73,10 @@ def gasthof(spieler):
     spieler.current_HP += hp_heilung
     if spieler.current_HP > spieler.max_HP:
         spieler.current_HP = spieler.max_HP
-        hp_heilung = 0
         print(f"Du bist vollständig geheilt und hast im Moment {spieler.current_HP} / {spieler.max_HP} HP")
     else:
         print(f"Du rastest und erhältst {hp_heilung} HP. Im Moment hast du {spieler.current_HP} / {spieler.max_HP} HP.")
+
 
 
 aktionen_zaehler = 0

@@ -1,11 +1,11 @@
-import character
+import inventory_and_items
 
 
 def zeige_marktplatz(spieler):
     while True:
         print(f"\n--- MARKTPLATZ (Gold: {spieler.gold}) ---")
         print("1) Gasthaus (Essen & Heilung)")
-        print("2) Alchemist (Energie & Tränke)")
+        print("2) Alchemist (Tränke)")
         print("3) Trainer (Erfahrung & Training)")
         print("4) Schmied (Waffen & Ausrüstung)")
         print("5) Verlassen")
@@ -15,15 +15,56 @@ def zeige_marktplatz(spieler):
         if wahl == "1":
             gasthaus(spieler)
         elif wahl == "2":
-            alchemist(spieler)
+            shop_menue(spieler, "ALCHEMIST", inventory_and_items.ALCHEMIST_ITEMS)
         elif wahl == "3":
             trainer(spieler)
         elif wahl == "4":
-            schmied(spieler)
+            shop_menue(spieler, "SCHMIED", inventory_and_items.SCHMIED_ITEMS)
         elif wahl == "5":
             break
         else:
             print("Ungültige Auswahl.")
+
+
+def shop_menue(spieler, name, items):
+    while True:
+        print(f"\n--- {name} (Gold: {spieler.gold}) ---")
+        for i, item in enumerate(items, 1):
+            print(f"{i}) {item.name} ({item.preis} Gold) - {item.boni}")
+        print(f"{len(items) + 1}) Zurück")
+
+        wahl = input("> ")
+        if wahl.isdigit():
+            idx = int(wahl) - 1
+            if idx == len(items):
+                break
+            if 0 <= idx < len(items):
+                item = items[idx]
+                if spieler.gold >= item.preis:
+                    spieler.gold -= item.preis
+                    spieler.inventar.append(item)
+                    bonus_val = inventory_and_items.parse_bonus(item.boni)
+
+                    if item.typ == "Waffe":
+                        if "stärke" in item.boni.lower():
+                            spieler.strength += bonus_val
+                        elif "geschicklichkeit" in item.boni.lower():
+                            spieler.dex += bonus_val
+                        elif "mana" in item.boni.lower():
+                            spieler.max_mana += bonus_val
+                    elif item.typ == "Ausrüstung":
+                        if "hp" in item.boni.lower():
+                            spieler.max_HP += bonus_val
+                            spieler.current_HP += bonus_val
+                        elif "verteidigung" in item.boni.lower():
+                            spieler.defense += bonus_val
+                        elif "geschicklichkeit" in item.boni.lower():
+                            spieler.dex += bonus_val
+                    print(f"Du hast {item.name} gekauft!")
+                else:
+                    print("Nicht genug Gold!")
+        else:
+            print("Ungültige Eingabe.")
 
 
 def gasthaus(spieler):
@@ -46,26 +87,6 @@ def gasthaus(spieler):
         print("Nicht genug Gold oder ungültige Wahl.")
 
 
-def alchemist(spieler):
-    print("\n--- ALCHEMIST ---")
-    print("1) Manatrank (20 Gold) - Stellt 50 Mana wieder her")
-    print("2) Energie-Elixier (50 Gold) - +5 Energie permanent")
-    print("3) Zurück")
-    wahl = input("> ")
-    if wahl == "1" and spieler.gold >= 20:
-        spieler.gold -= 20
-        spieler.current_mana = min(spieler.max_mana, spieler.current_mana + 50)
-        print("Deine magische Energie kehrt zurück.")
-    elif wahl == "2" and spieler.gold >= 50:
-        spieler.gold -= 50
-        spieler.energy += 5
-        print("Du fühlst dich energiegeladener!")
-    elif wahl == "3":
-        return
-    else:
-        print("Nicht genug Gold oder ungültige Wahl.")
-
-
 def trainer(spieler):
     print("\n--- TRAINER ---")
     print("1) Kleines Training (40 Gold) - +100 XP")
@@ -80,28 +101,6 @@ def trainer(spieler):
         spieler.gold -= 100
         spieler.exp += 300
         print("Du bist deutlich stärker geworden!")
-    elif wahl == "3":
-        return
-    else:
-        print("Nicht genug Gold oder ungültige Wahl.")
-
-
-def schmied(spieler):
-    print("\n--- SCHMIED ---")
-    print("1) Eisenschwert (60 Gold) - +10 Stärke")
-    print("2) Lederrüstung (50 Gold) - +5 Verteidigung")
-    print("3) Zurück")
-    wahl = input("> ")
-    if wahl == "1" and spieler.gold >= 60:
-        spieler.gold -= 60
-        spieler.strength += 10
-        spieler.inventar.append("Eisenschwert")
-        print("Eine feine Klinge!")
-    elif wahl == "2" and spieler.gold >= 50:
-        spieler.gold -= 50
-        spieler.defense += 5
-        spieler.inventar.append("Lederrüstung")
-        print("Das wird dich schützen.")
     elif wahl == "3":
         return
     else:
